@@ -1,0 +1,38 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<jenkins.advancedqueue.PriorityConfiguration plugin="PrioritySorter@3.6.0">
+  <jobGroups class="linked-list">
+    <jenkins.advancedqueue.JobGroup>
+      <id>0</id>
+      <priority>5</priority>
+      <jobGroupStrategy class="jenkins.advancedqueue.jobinclusion.strategy.ViewBasedJobInclusionStrategy">
+        <viewName>priority</viewName>
+        <useJobFilter>false</useJobFilter>
+        <jobPattern>.*</jobPattern>
+      </jobGroupStrategy>
+      <description>高优先级的job</description>
+      <runExclusive>false</runExclusive>
+      <useJobFilter>false</useJobFilter>
+      <jobPattern>.*</jobPattern>
+      <usePriorityStrategies>false</usePriorityStrategies>
+      <priorityStrategies/>
+    </jenkins.advancedqueue.JobGroup>
+    <jenkins.advancedqueue.JobGroup>
+      <id>1</id>
+      <priority>-1</priority>
+      <jobGroupStrategy class="jenkins.advancedqueue.jobinclusion.strategy.AllJobsJobInclusionStrategy"/>
+      <description>根据参数构建优先级，参数名：BuildPriority</description>
+      <runExclusive>false</runExclusive>
+      <useJobFilter>false</useJobFilter>
+      <jobPattern>.*</jobPattern>
+      <usePriorityStrategies>true</usePriorityStrategies>
+      <priorityStrategies>
+        <jenkins.advancedqueue.JobGroup_-PriorityStrategyHolder>
+          <id>0</id>
+          <priorityStrategy class="jenkins.advancedqueue.priority.strategy.BuildParameterStrategy">
+            <parameterName>BuildPriority</parameterName>
+          </priorityStrategy>
+        </jenkins.advancedqueue.JobGroup_-PriorityStrategyHolder>
+      </priorityStrategies>
+    </jenkins.advancedqueue.JobGroup>
+  </jobGroups>
+</jenkins.advancedqueue.PriorityConfiguration>
