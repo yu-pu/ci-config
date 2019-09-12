@@ -41,7 +41,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>higher</string>
       </jobNames>
       <jobFilters/>
       <columns>
